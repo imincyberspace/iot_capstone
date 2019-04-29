@@ -3,11 +3,18 @@ var http = require('http').Server(app);
 var path = require('path');
 var io = require('socket.io')(http);
 
-app.get(['/', '/:sample','/iot_capstone/:sample'], function(req, res) {
+app.get(['/','/iot_capstone/'], function(req, res) {
   var fn=path.join(__dirname,"index.html");
-  console.log("Variable: " + req.params.sample);
+  //console.log("Variable: " + req.params.sample);
+  console.log("User logged on at " + new Date());
   io.sockets.emit('boom', {result: req.params.sample});
   res.sendFile(fn);
+});
+
+app.head(['/:sample','/iot_capstone/:sample'], function(req, res) {
+  console.log("HEAD request, Variable: " + req.params.sample);
+  io.sockets.emit('boom', {result: req.params.sample});
+  res.end();
 });
 
 io.on('connection', function(socket) {
