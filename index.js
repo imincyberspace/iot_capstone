@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var path = require('path');
 var io = require('socket.io')(http);
 
-app.get(['/', '/:sample'], function(req, res) {
+app.get(['/', '/:sample','/iot_capstone/:sample'], function(req, res) {
   var fn=path.join(__dirname,"index.html");
   console.log("Variable: " + req.params.sample);
   io.sockets.emit('boom', {result: req.params.sample});
