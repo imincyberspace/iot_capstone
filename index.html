@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sample</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <h1>Update: This is a test.  Watching MacGyver!</h1>
+  <div id="app">
+    Sensor Value: {{ sensorValue }}
+  </div>
+  <script>
+     var socket = io();
+     socket.on('boom', function(data) {
+       //alert("Message: " + data.result);
+       app.sensorValue = data.result;
+     });
+  </script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data: {
+        sensorValue: 'pending'
+      }
+    });
+  </script>
+</body>
+</html>

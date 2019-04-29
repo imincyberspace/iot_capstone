@@ -1,0 +1,16 @@
+{
+  "name": "capstone",
+  "version": "1.0.0",
+  "description": "My IOT capstone project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Noyb",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.11",
+    "socket.io": "^2.2.0"
+  }
+}
