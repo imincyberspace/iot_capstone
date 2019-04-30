@@ -9,9 +9,10 @@
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
-  <h1>Update: This is a test.  Watching MacGyver!</h1>
+  <h1>Hello!</h1>
   <div id="app">
     Sensor Value: {{ sensorValue }}
+    <button-counter></button-counter>
   </div>
   <script>
      var socket = io();
@@ -19,14 +20,17 @@
        //alert("Message: " + data.result);
        app.sensorValue = data.result;
      });
-  </script>
-  <script>
+     socket.on('newdata', function(myData) {
+       alert("Your name is " + myData.first + ' ' + myData.last);
+     });
+
     var app = new Vue({
       el:'#app',
       data: {
         sensorValue: 'pending'
       }
     });
+
   </script>
 </body>
 </html>
